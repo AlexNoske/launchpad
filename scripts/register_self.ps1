@@ -3,7 +3,10 @@
 # claude_goto.bat's next launch starts at TR instead of re-using this window's slot.
 
 $ScriptDir    = Split-Path -Parent $MyInvocation.MyCommand.Path
-$SessionsFile = Join-Path $ScriptDir 'open_sessions.json'
+$RepoRoot     = Split-Path -Parent $ScriptDir
+$StateDir     = Join-Path $RepoRoot 'state'
+if (-not (Test-Path $StateDir)) { New-Item -ItemType Directory -Path $StateDir | Out-Null }
+$SessionsFile = Join-Path $StateDir 'open_sessions.json'
 
 function Get-AncestorClaudePid {
     $walkPid = $PID
@@ -58,8 +61,8 @@ if (Test-Path $SessionsFile) {
 
 $sessionsHash['0'] = [PSCustomObject]@{
     folder_index = $null
-    name         = 'test_claude (repository manager)'
-    path         = $ScriptDir
+    name         = "$(Split-Path -Leaf $RepoRoot) (repository manager)"
+    path         = $RepoRoot
     pid          = $selfPid
     launcher     = 'self'
     app          = 'self'

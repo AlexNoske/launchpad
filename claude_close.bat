@@ -1,2 +1,2 @@
 @echo off
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0claude_close.ps1" %*
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\claude_close.ps1" %*

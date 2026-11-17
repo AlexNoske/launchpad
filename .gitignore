@@ -1,0 +1,5 @@
+# Machine-specific state (folder registry, live session PIDs)
+state/
+
+# Windows shortcuts embed absolute paths
+*.lnk

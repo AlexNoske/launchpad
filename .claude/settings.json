@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "C:\\Users\\alex\\Desktop\\test_claude\\register_self.bat",
+            "command": "& \"$env:CLAUDE_PROJECT_DIR\\scripts\\register_self.bat\"",
             "shell": "powershell",
             "timeout": 15,
             "statusMessage": "Pinning terminal to grid slot TL..."

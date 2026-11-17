@@ -7,8 +7,9 @@ param(
 )
 
 $ScriptDir    = Split-Path -Parent $MyInvocation.MyCommand.Path
-$IndexFile    = Join-Path $ScriptDir 'folder_index.json'
-$SessionsFile = Join-Path $ScriptDir 'open_sessions.json'
+$StateDir     = Join-Path (Split-Path -Parent $ScriptDir) 'state'
+$IndexFile    = Join-Path $StateDir 'folder_index.json'
+$SessionsFile = Join-Path $StateDir 'open_sessions.json'
 $PosScript    = Join-Path $ScriptDir 'set_window_pos.ps1'
 
 # Walks this process's own parent chain. Used to identify which tracked session (if any) this

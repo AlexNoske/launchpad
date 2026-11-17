@@ -4,7 +4,7 @@ param(
 )
 
 $ScriptDir    = Split-Path -Parent $MyInvocation.MyCommand.Path
-$SessionsFile = Join-Path $ScriptDir 'open_sessions.json'
+$SessionsFile = Join-Path (Join-Path (Split-Path -Parent $ScriptDir) 'state') 'open_sessions.json'
 
 if (-not (Test-Path $SessionsFile)) {
     Write-Host "No sessions registry found at $SessionsFile (nothing has been launched yet)."
